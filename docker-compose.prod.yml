@@ -9,8 +9,8 @@ services:
       - static_volume:/backend/staticfiles
       - media:/backend/media
     environment:
-      ADMIN_USERNAME: "${ADMIN_USERNAME}"
-      ADMIN_PASSWORD: "${ADMIN_PASSWORD}"
+      ADMIN_USERNAME: "admin"
+      ADMIN_PASSWORD: "password"
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       CELERY_BROKER_URL: "amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq"
       DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable"
@@ -55,7 +55,7 @@ services:
       dockerfile: nginx/Dockerfile
     environment:
       API_URL: "http://backend:8000"
-      GOOGLE_TRACKING_ID: ""
+      GOOGLE_TRACKING_ID: "UA-12345678-1"
     volumes:
       - static_volume:/static
       - media:/media
